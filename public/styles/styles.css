@@ -1,0 +1,380 @@
+/* Styling elements Snowman game for smallest screen */
+* {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 1500px;
+}
+
+:root {
+    --title-font-family: "Emilys Candy", serif;
+    --page-font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    --key-original-color: #d3d6da;
+    --tile-answer-right: #6aaa64;
+    --tile-answer-wrong: #bf2e1a;
+    --tile-border-color: rgb(117, 2, 117);
+    --msg-text-color: #bf2e1a;
+    --tile-text-color: black;
+    --stats-span-color: rgb(57, 55, 55);
+}
+
+body {
+    margin: 0;
+    font-family: var(--page-font-family);
+}
+
+p {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--page-font-family);
+    padding-top: 2rem;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    padding: 1rem;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading{
+    display: flex;
+    margin: 0;
+    padding-top: 2vw;
+}
+
+h2{
+    text-align: start;
+    margin: 0;
+    width: 50%;
+    font-family: var(--title-font-family);
+    color: var(--msg-text-color);
+    padding-left: 3rem;
+}
+
+.nav-bar{
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.nav-bar ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.nav-bar ul:last-child{
+    padding-right: 4rem;
+}
+
+ul li {
+    text-decoration: none;
+    flex-basis: auto;
+    margin-left: 0;
+    padding: 0 1rem;
+}
+
+.clock{
+    display: flex;
+}
+
+.boardWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.canvas-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+.timer {
+    padding-top: 2rem;
+    font-size: 2.5rem;
+    color: black;
+    font-weight: bold;
+}
+
+.timer-change-color {
+    padding-top: 2rem;
+    font-size: 2.5rem;
+    color: var(--msg-text-color);
+    font-weight: bold;
+}
+
+#canvas-area {
+    height: auto;
+}
+
+#board {
+    display: flex;
+    height: 50%;
+    width: 50vw;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.tiles {
+    border-bottom: solid 8px var(--tile-border-color);
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    width: 2rem;
+    color: var(--tile-text-color);
+}
+
+.tile-color {
+    color: white;
+}
+
+.space {
+    margin: 0 0.5rem;
+    width: 10px;
+}
+
+#keyBoard {
+    width: 100%;
+    margin: 0 8px;
+    padding: 0 1rem;
+
+}
+
+.keyBoardRow {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.key {
+    font-size: 2vw;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    margin: 0 6px 0 0;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--key-original-color);
+    flex: 1 1 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+#Key {
+    background-color: white;
+    cursor: default;
+}
+
+.key.incorrect-key {
+    background-color: var(--tile-answer-wrong);
+    color: white;
+    border: none;
+}
+
+.key.correct-key {
+    background-color: var(--tile-answer-right);
+    color: white;
+    border: none;
+}
+
+#msg-to-user {
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+    font-weight: bolder;
+    color: var(--tile-answer-wrong);
+}
+
+#hint:hover {
+    cursor: pointer;
+}
+
+.hint-msg {
+    font-style: italic;
+    width: 600px;
+    margin: 0;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.game-status {
+    font-style: normal;
+    font-size: 2rem;
+    padding-top: 1rem;
+    font-weight: bolder;
+    color: var( --msg-text-color);
+}
+
+.stats-container{
+    display: flex;
+    flex-direction: row;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: var(--tile-answer-wrong);
+    justify-content: center;
+}
+
+.stats-figures{
+    display: flex;
+    flex-direction: column;
+    padding: 0 3rem;
+    margin: 0;
+}
+
+h3{
+    font-family: var(--title-font-family);
+    color: var(--msg-text-color);
+    font-size: 2.5rem;
+}
+
+span{
+    color:  var(--stats-span-color);
+    font-size: 1rem;
+}
+
+.stats-container span {
+    padding: 0.25rem;
+}
+
+/* Source for animation: https://www.w3schools.com/css/css3_animations.asp */
+.animated {
+    animation: blink 1s ease;
+    animation-iteration-count: 59;
+}
+
+@keyframes blink {
+    from {
+        color: var(--msg-text-color);
+    }
+
+    to {
+        color: white;
+    }
+}
+
+
+/* media queries to handle different screen widths and heights */
+/* for larger screens on a monitor */
+
+
+@media screen and (min-width: 1400px) {
+
+    #canvas-area{
+        height: 500px;
+    }
+
+    .gamePlayWrapper{
+        height: 100vh;
+    }
+
+    #board {
+        height: 10vh;
+    }
+
+    .boardWrapper{
+        height: 35vh;
+    }
+
+    #countdown{
+        padding-right: 15rem;
+    }
+    .key {
+        height: 50px;
+        font-size: 1.5vw;
+    }
+
+    #keyBoard {
+        width: 100%;
+    }
+
+    .tiles {
+        font-size: 3vw;
+        width: 3.5vw;
+        letter-spacing: 5px;
+        font-weight: bold;
+    }
+
+    .hint-msg {
+        font-size: 1.25rem;
+        padding: 0;
+        margin: auto;
+    }
+
+    .stats-container{
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+
+    .game-status {
+        font-weight: bolder;
+        font-size: 2rem;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 1160px) and (max-width: 1390px) {
+
+
+    main {
+        padding-top: 3rem;
+    }
+
+    #board {
+        height: 25%;
+    }
+
+    .key {
+        height: 60px;
+        font-size: 2.25vw;
+    }
+
+    #keyBoard {
+        width: 100%;
+    }
+
+    .tiles {
+        font-size: 2.25rem;
+        width: 2.5rem;
+        letter-spacing: 2px;
+        margin: 0;
+    }
+
+    .game-status {
+        font-weight: bolder;
+        font-size: 2.5rem;
+        padding: 0;
+    }
+
+    .hint-msg {
+        font-size: 1.25rem;
+        padding: 0;
+        margin: auto;
+    }
+
+    .stats-container{
+        font-size: 2rem;
+    }
+
+}
