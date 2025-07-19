@@ -15,14 +15,6 @@ const PORT = process.env.PORT || 3000;
 // Trust proxy for HTTPS behind reverse proxy
 app.set('trust proxy', 1);
 
-// Optional: Force HTTPS redirect
-app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https') {
-        return res.redirect(`https://${req.header('host')}${req.url}`);
-    }
-    next();
-});
-
 // CORS middleware - must come before routes
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
